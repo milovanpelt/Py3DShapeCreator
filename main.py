@@ -1,20 +1,17 @@
 import tkinter as tk
 
-window = tk.Tk()
+class ShapeGUI:
+    def __init__(self):
+        self.window = tk.Tk()
+        self.window.geometry("500x300")
+        self.window.title("Shape Creator")
 
-window.geometry("500x300")
-window.title("Shape Creator")
+        button = tk.Button(self.window, text="Create Shape", font=('Arial', 18), command=self.CreateBlenderCube)
+        button.pack(padx=10, pady=10)
 
-label = tk.Label(window, text="Hello World!", font=('Arial', 18))
-label.pack(padx=20, pady=20)
+        self.window.mainloop()
 
-textbox = tk.Text(window, height=3, font=('Arial', 16))
-textbox.pack(padx=10, pady=10)
+    def CreateBlenderCube(self):
+        print("Created Blender Cube")
 
-entry = tk.Entry(window)
-entry.pack()
-
-button = tk.Button(window, text="Create Shape", font=('Arial', 18))
-button.pack(padx=10, pady=10)
-
-window.mainloop()
+ShapeGUI()
