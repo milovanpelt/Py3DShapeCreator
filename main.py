@@ -3,11 +3,11 @@ import subprocess
 import os
 
 class ShapeGUI:
-    def __init__(self):
+    def __init__(self, shapeScript):
         # blender
         self.blender_executable_path = "C:/Program Files/Blender Foundation/Blender 4.1/blender.exe"
         self.blender_project_path = "C:/Users/Xonar/Documents/GitHub/Py3DShapeCreator/menger_sponge.blend"
-        self.blender_script_path = os.path.join(os.getcwd(), 'create_cube.py')
+        self.shape_script = os.path.join(os.getcwd(), shapeScript)
 
         # tk window
         self.window = tk.Tk()
@@ -19,6 +19,6 @@ class ShapeGUI:
 
         self.window.mainloop()
     def create_blender_cube(self):
-        subprocess.run([self.blender_executable_path, self.blender_project_path, '--python', self.blender_script_path])
+        subprocess.run([self.blender_executable_path, self.blender_project_path, '--python', self.shape_script])
 
-ShapeGUI()
+ShapeGUI('create_cube.py')
