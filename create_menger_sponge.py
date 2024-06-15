@@ -9,11 +9,14 @@ from menger_sponge import Menger_Sponge
 
 def create_menger_sponge():
     # save file after creation
-    menger_sponge = Menger_Sponge(0, 0, 0, 10)
-    menger_sponge.generate(2)
+    menger_sponge_first_iteration = Menger_Sponge(-7.5, 0, 0, 10)
+    menger_sponge_first_iteration.generate(1)
+
+    menger_sponge_second_iteration = Menger_Sponge(7.5, 0, 0, 10)
+    menger_sponge_second_iteration.generate(2)
 
     # save file after creation
-    #bpy.ops.wm.save_mainfile()
+    bpy.ops.wm.save_mainfile()
 
 if __name__ == "__main__":
     create_menger_sponge()

@@ -1,5 +1,6 @@
 import sys
 import os
+import bpy
 
 # Add the directory of the current script to the system path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +21,14 @@ class Menger_Sponge:
         for x in range(-1, 2):
             for y in range(-1, 2):
                 for z in range(-1, 2):
-                    new_size = cube.size / 3
-                    new_x_position = cube.x + (x * new_size)
-                    new_y_position = cube.y + (y * new_size)
-                    new_z_position = cube.z + (z * new_size)
-                    new_cube = Cube(new_x_position, new_y_position, new_z_position, new_size)
-                    cubes.append(new_cube)
+                    sum = abs(x) + abs(y) + abs(z)
+                    if (sum > 1):
+                        new_size = cube.size / 3
+                        new_x_position = cube.x + (x * new_size)
+                        new_y_position = cube.y + (y * new_size)
+                        new_z_position = cube.z + (z * new_size)
+                        new_cube = Cube(new_x_position, new_y_position, new_z_position, new_size)
+                        cubes.append(new_cube)
         return cubes
     
     def generate(self, iterations):
@@ -35,3 +38,6 @@ class Menger_Sponge:
                 new_boxes = self.__CreateCubes(cube)
                 next_boxes.extend(new_boxes)
             self.sponge = next_boxes
+        
+        for cube in self.sponge:
+            bpy.ops.mesh.primitive_cube_add(size=cube.size, location=(cube.x, cube.y, cube.z))
