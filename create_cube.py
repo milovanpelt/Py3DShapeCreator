@@ -8,7 +8,9 @@ import bpy
 from cube import Cube
 
 def create_cube():
-    Cube(0, 0, 0, 10)
+    new_cube = Cube(0, 0, 0, 10)
+    new_cube.create()
+    
     bpy.ops.wm.save_mainfile()
 
 if __name__ == "__main__":
