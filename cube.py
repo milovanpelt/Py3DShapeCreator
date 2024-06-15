@@ -1,5 +1,9 @@
 import bpy
 
 class Cube:
-    def __init__(self, x, y, z, _size):
-        bpy.ops.mesh.primitive_cube_add(size=_size, enter_editmode=False, align='WORLD', location=(x, y, z))
+    def __init__(self, _x, _y, _z, _size):
+        self.x =_x
+        self.y = _y
+        self.z = _z
+        self.size = _size
+        bpy.ops.mesh.primitive_cube_add(size=self.size, enter_editmode=False, align='WORLD', location=(self.x, self.y, self.z))
