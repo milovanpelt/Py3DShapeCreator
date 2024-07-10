@@ -40,4 +40,4 @@ class Menger_Sponge:
             self.sponge = next_boxes
         
         for cube in self.sponge:
-            bpy.ops.mesh.primitive_cube_add(size=cube.size, location=(cube.x, cube.y, cube.z))
+            cube.create()
